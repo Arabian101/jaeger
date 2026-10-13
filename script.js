@@ -1,73 +1,51 @@
 document.addEventListener('DOMContentLoaded', () => {
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('.page-section');
 
-  // 1. PRODUCTEN DATA
-  const products = [
-    { id: 1, name: 'JAEGER Classic 5.5"', category: 'scharen', price: 189, tag: 'Bestseller' },
-    { id: 2, name: 'JAEGER Precision 6.0"', category: 'scharen', price: 219, tag: 'Populair' },
-    { id: 3, name: 'JAEGER Coupeerschaar 30T', category: 'coupeer', price: 199, tag: 'Nieuw' },
-    { id: 4, name: 'JAEGER Master Black Edition', category: 'scharen', price: 249, tag: 'Premium' },
-    { id: 5, name: 'JAEGER Effileerschaar Dual', category: 'coupeer', price: 209, tag: 'Actie' },
-    { id: 6, name: 'JAEGER Barber Set Deluxe', category: 'sets', price: 379, tag: 'Voordeel' }
-  ];
-
-  let cart = [];
-
-  // 2. SCROLL REVEAL ANIMATIES (Zorgt dat de pagina zichtbaar wordt)
-  const revealElements = document.querySelectorAll('.reveal');
-  const revealOnScroll = () => {
-    revealElements.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top <= window.innerHeight * 0.85) {
-        el.classList.add('in');
+  // Simple Router to show/hide pages based on URL hash
+  function handleRoute() {
+    const hash = window.location.hash || '#home';
+    
+    sections.forEach(section => {
+      if ('#' + section.id === hash) {
+        section.classList.add('active');
+      } else {
+        section.classList.remove('active');
       }
     });
-  };
-  window.addEventListener('scroll', revealOnScroll);
-  revealOnScroll(); // Direct uitvoeren voor elementen bovenaan
 
-  // 3. NAVBAR HEADER SCROLL EFFECT
-  const header = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.classList.add('solid');
-    } else {
-      header.classList.remove('solid');
-    }
-  });
-
-  // 4. MOBIEL MENU (BURGER)
-  const burger = document.getElementById('burger');
-  const menu = document.getElementById('menu');
-  if (burger && menu) {
-    burger.addEventListener('click', () => {
-      menu.classList.toggle('open');
+    navLinks.forEach(link => {
+      if (link.getAttribute('href') === hash) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
     });
+
+    window.scrollTo(0, 0);
   }
 
-  // 5. COLLECTIE EN FILTERS RENDEREN
-  const grid = document.getElementById('grid');
-  const filtersContainer = document.getElementById('filters');
+  window.addEventListener('hashchange', handleRoute);
+  handleRoute(); // Run on initial load
 
-  if (grid && filtersContainer) {
-    const categories = ['alles', 'scharen', 'coupeer', 'sets'];
-    
-    // Filters aanmaken
-    filtersContainer.innerHTML = categories.map((cat, idx) => `
-      <button class="${idx === 0 ? 'on' : ''}" data-cat="${cat}">
-        ${cat.charAt(0).toUpperCase() + cat.slice(1)}
-      </button>
-    `).join('');
+  // Category Filter Functionality in Shop
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const productCards = document.querySelectorAll('.product-card');
 
-    // Producten tonen
-    const renderProducts = (catFilter = 'alles') => {
-      const filtered = catFilter === 'alles' 
-        ? products 
-        : products.filter(p => p.category === catFilter);
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-      grid.innerHTML = filtered.map(p => `
-        <article class="card">
-          <div class="img">
-            <span class="tag">${p.tag}</span>
-            <svg><use href="#scissors"/></svg>
-          </div>
-          <div
+      const filter = btn.getAttribute('data-filter');
+
+      productCards.forEach(card => {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+});
