@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="nl" style="background:#f5f1e9">
+<html lang="nl" style="background:#fff">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Eclipse | High end barber instruments</title>
 <meta name="description" content="Eclipse: handgeslepen premium kappersscharen voor de veeleisende professional.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f5f1e9;--white:#fff;--grey:#ebe7df;--line:#d9d4ca;--ink:#1c1c1a;--muted:#6b675f;--soft:#8f8a80;
-  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Manrope',system-ui,sans-serif;--e:0}
+:root{--bg:#fff;--white:#fff;--grey:#faf9f7;--tint:#f4f2ee;--line:#e7e4de;--ink:#161616;--muted:#6f6b64;--soft:#a09c94;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:70px;background:var(--bg)}
 body{background:var(--bg);color:var(--ink);font:400 1rem/1.8 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -32,8 +31,6 @@ section{padding:9rem 0}
 header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 2.5rem;transition:.4s}
 header.solid{background:rgba(245,241,233,.88);backdrop-filter:blur(14px);padding:.9rem 2.5rem;border-bottom:1px solid var(--line)}
 .logo{display:flex;align-items:center;gap:.9rem;font-size:1.45rem;letter-spacing:.38em;text-transform:uppercase;color:var(--ink)}
-.mark{--mk:var(--bg);position:relative;flex:none;width:20px;height:20px;border-radius:50%;background:var(--ink);overflow:hidden}
-.mark::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--mk);transform:translate(32%,-14%)}
 nav{display:flex;gap:1.8rem}
 nav a{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;position:relative;padding:.3rem 0;color:var(--muted);transition:.3s}
 nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--ink);transition:.3s}
@@ -52,12 +49,6 @@ nav a:hover,nav a.active{color:var(--ink)}nav a:hover::after,nav a.active::after
 .hero h1 .l1{font:500 .75rem var(--sans);letter-spacing:.42em;text-transform:uppercase;color:var(--ink)}
 .hero h1 .l2{font-size:clamp(3.4rem,9.5vw,8rem);line-height:1;color:#7a756b;font-style:italic;font-weight:400}
 .hero .lead{margin:0 auto 3rem;max-width:30rem;font-size:1.05rem}
-.hero-art{position:absolute;inset:0;display:grid;place-items:center;z-index:1;pointer-events:none}
-.hero-art>*{grid-area:1/1}
-.disc{width:min(640px,92vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fdfcf9,#e2ddd3 72%);box-shadow:0 0 140px 30px rgba(255,255,255,.8)}
-.moon{width:min(576px,83vw);aspect-ratio:1;border-radius:50%;background:var(--bg);box-shadow:0 0 70px rgba(0,0,0,.08);
-  transform:translate(calc(14vmin*(1 - var(--e))),calc(-7vmin*(1 - var(--e))));transition:transform .2s linear}
-.big-scissors{width:min(460px,80vw);aspect-ratio:1;color:var(--ink);opacity:.07;transform:rotate(12deg)}
 .scroll-hint{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:3;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--soft);padding-bottom:2.4rem}
 .scroll-hint::after{content:"";position:absolute;bottom:0;left:50%;width:1px;height:1.9rem;background:var(--ink);animation:drop 2.4s infinite}
 @keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
@@ -80,10 +71,6 @@ nav a:hover,nav a.active{color:var(--ink)}nav a:hover::after,nav a.active::after
 .card{background:var(--white);border:1px solid var(--line);display:flex;flex-direction:column;transition:.5s}
 .card:hover{transform:translateY(-6px);box-shadow:0 35px 50px -35px rgba(0,0,0,.3)}
 .card .img{aspect-ratio:1;position:relative;display:grid;place-items:center;overflow:hidden;background:linear-gradient(180deg,#fbf9f5,#f1ede5)}
-.card .img::before,.card .img::after{content:"";position:absolute;border-radius:50%;aspect-ratio:1;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
-.card .img::before{width:66%;background:#e2ddd3}
-.card .img::after{width:60%;background:#f8f5ef;transform:translate(16%,-12%)}
-.card:hover .img::after{transform:translate(0,0)}
 .card .img svg{position:relative;z-index:2;width:44%;aspect-ratio:1;color:var(--ink);transform:rotate(12deg);transition:.9s}
 .card:hover .img svg{transform:rotate(-6deg) scale(1.06)}
 .tag{position:absolute;top:1.1rem;left:1.1rem;z-index:3;background:var(--ink);color:var(--bg);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;padding:.25rem .75rem}
@@ -106,9 +93,6 @@ nav a:hover,nav a.active{color:var(--ink)}nav a:hover::after,nav a.active::after
 .steps h3{font-size:1.6rem;margin:.4rem 0 .6rem}
 .steps p{margin:0;font-size:.9rem}
 .quote{position:relative;overflow:hidden;text-align:center;padding:11rem 1.5rem;background:var(--grey)}
-.quote::before,.quote::after{content:"";position:absolute;left:50%;top:50%;border-radius:50%;transform:translate(-50%,-50%);border:1px solid var(--line)}
-.quote::before{width:min(620px,90vw);aspect-ratio:1}.quote::after{width:min(420px,70vw);aspect-ratio:1}
-.quote>*{position:relative;z-index:1}
 .quote blockquote{font:italic 400 clamp(2rem,4.8vw,3.8rem)/1.25 var(--serif);max-width:860px;margin:0 auto 2rem}
 .cta-final{text-align:center}
 .cta-final p{max-width:36rem;margin:0 auto 2.5rem}
@@ -173,7 +157,6 @@ input.bad,textarea.bad{border-color:#a5473a}
 
 footer{text-align:center;padding:4.5rem 1.5rem;background:var(--grey);border-top:1px solid var(--line)}
 footer .logo{justify-content:center;font-size:1.3rem;margin-bottom:1.2rem}
-footer .mark{--mk:var(--grey)}
 footer p{font-size:.8rem;color:var(--soft);margin-bottom:.4rem}
 footer a:hover{color:var(--ink)}
 
@@ -221,6 +204,74 @@ body.cart-open #overlay{opacity:1;pointer-events:auto}
   .photo.wide img{aspect-ratio:4/3}.quote{padding:7rem 1.5rem}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+/* Luxe en minimalistisch */
+body{font-weight:300;font-size:1.02rem;line-height:1.9}
+h1,h2,h3,.logo{font-weight:300}
+h2{font-size:clamp(2.4rem,4.8vw,4rem);letter-spacing:-.005em;line-height:1.12}
+h3{font-weight:400}
+section{padding:11rem 0}
+.eyebrow{font:400 .66rem var(--sans);letter-spacing:.4em;color:var(--soft);margin-bottom:1.6rem}
+.eyebrow::before{width:2rem;height:1px;border:0;border-radius:0;background:currentColor;margin-right:1rem;vertical-align:middle}
+.btn{background:transparent;color:var(--ink);border:1px solid var(--ink);padding:1.05rem 2.6rem;font:400 .66rem var(--sans);letter-spacing:.3em}
+.btn:hover,.btn.outline:hover{background:var(--ink);color:#fff}
+header{padding:1.9rem 3rem}
+header.solid{background:rgba(255,255,255,.92);border-bottom:1px solid var(--line);padding:1.1rem 3rem}
+.logo{font-size:1.55rem;letter-spacing:.55em;font-weight:400}
+nav a{font:400 .66rem var(--sans);letter-spacing:.26em}
+#cartBtn{border:0;border-bottom:1px solid var(--ink);padding:.3rem 0;font:400 .66rem var(--sans);letter-spacing:.26em}
+#cartBtn:hover{background:none;color:var(--soft)}
+.hero h1 .l1{font:400 .7rem var(--sans);letter-spacing:.5em}
+.hero-text{max-width:1100px}
+.hero h1 .l2{font-size:clamp(3rem,8vw,7.2rem);font-weight:300;color:#8d8981;white-space:nowrap}
+.hero .lead{font-size:1.1rem;max-width:28rem}
+.scroll-hint{font:400 .62rem var(--sans);letter-spacing:.4em}
+.scroll-hint::after{background:var(--soft)}
+.usp{border-block:1px solid var(--line)}.usp b{font-weight:400}
+.filters{gap:.5rem 2.2rem}
+.filters button{border:0;border-bottom:1px solid transparent;padding:.4rem 0;font:400 .66rem var(--sans);letter-spacing:.26em}
+.filters button:hover{border-color:transparent;color:var(--ink)}
+.filters button.on{background:none;color:var(--ink);border-bottom-color:var(--ink)}
+.grid{gap:3rem 2rem}
+.card{background:none;border:0}
+.card:hover{transform:none;box-shadow:none}
+.card .img{aspect-ratio:4/5;background:var(--tint);transition:background .6s}
+.card:hover .img{background:#eeebe5}
+.card .img svg{width:36%;transform:rotate(12deg)}
+.card:hover .img svg{transform:rotate(4deg) scale(1.04)}
+.tag{background:#fff;color:var(--ink);font:400 .58rem var(--sans);letter-spacing:.26em;padding:.4rem .8rem}
+.card .body{padding:1.8rem 0 0}
+.card h3{font-size:1.65rem}
+.price{font-weight:400;font-size:1.3rem}
+.add{border:0;border-bottom:1px solid var(--ink);padding:.3rem 0;font:400 .62rem var(--sans);letter-spacing:.26em}
+.add:hover{background:none;color:var(--soft);border-color:var(--soft)}
+.story{background:var(--grey)}.cta-final{background:#fff}
+.steps article,.cards article,.feats article,.mat{border:0;border-top:1px solid var(--line);background:none;padding:2rem 0 0}
+.steps article:hover{transform:none;box-shadow:none}
+.steps,.cards,.feats{gap:3rem}
+.steps span,.principle span{font-weight:300}
+.mat-grid{gap:0}.mat{padding:2rem 0}.mat:last-child{border-bottom:1px solid var(--line)}
+.mat b{font-weight:300}
+.quote{background:var(--grey);padding:12rem 1.5rem}
+.quote blockquote{font-weight:300}
+.photo{margin:0 14px 14px 0}
+.photo::before{inset:14px -14px -14px 14px;border-color:#d9d5cd;opacity:1}
+.photo img{filter:saturate(.75) contrast(1.02) brightness(1.04);box-shadow:0 40px 60px -45px rgba(0,0,0,.25)}
+.photo::after{background:linear-gradient(180deg,transparent 70%,rgba(255,255,255,.4))}
+.prose .big{font:300 clamp(1.5rem,2.6vw,1.95rem)/1.6 var(--serif)}
+.emph{font:italic 400 1.6rem/1.6 var(--serif)}
+.principle{padding:4rem 0}
+.compare td:first-child{font-weight:400}
+input,textarea{background:transparent;border:0;border-bottom:1px solid var(--line);padding:.8rem 0;font:300 1rem var(--sans)}
+input:focus,textarea:focus{border-color:var(--ink)}
+label{font:400 .64rem var(--sans);letter-spacing:.26em}
+footer{background:#fff;padding:5rem 1.5rem}
+footer .logo{margin-bottom:1.4rem}
+.cart-foot{background:#fff}.cart-head h3{font-weight:400}
+#overlay{background:rgba(22,22,22,.18)}
+#toast{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.reveal{transform:translateY(24px);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.2,.7,.2,1)}
+@media(max-width:900px){section{padding:6.5rem 0}header,header.solid{padding-inline:1.2rem}.quote{padding:7rem 1.5rem}.logo{letter-spacing:.4em}}
 </style>
 </head>
 <body>
@@ -232,8 +283,7 @@ body.cart-open #overlay{opacity:1;pointer-events:auto}
     <p class="lead reveal">Handgeslepen scharen van kobaltstaal, gemaakt voor barbiers die elke snede voelen.</p>
     <div class="reveal"><a href="#/collectie" class="btn outline">Shop the collection</a></div>
   </div>
-  <div class="hero-art"><div class="disc"></div><div class="moon"></div><svg class="big-scissors"><use href="#scissors"/></svg></div>
-  <a href="#/" class="scroll-hint" data-scroll="favorieten">Scroll</a>
+    <a href="#/" class="scroll-hint" data-scroll="favorieten">Scroll</a>
 </section>
 
 <section class="usp">
@@ -530,12 +580,12 @@ body.cart-open #overlay{opacity:1;pointer-events:auto}
 
 document.body.insertAdjacentHTML('afterbegin', `
 <svg width="0" height="0" style="position:absolute">
-  <symbol id="scissors" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+  <symbol id="scissors" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
     <circle cx="28" cy="80" r="12"/><circle cx="72" cy="80" r="12"/><path d="M32 69 L80 6 M68 69 L20 6"/>
   </symbol>
 </svg>
 <header id="nav">
-  <a href="#/" class="logo"><i class="mark"></i>Eclipse</a>
+  <a href="#/" class="logo">Eclipse</a>
   <nav id="menu"><a href="#/collectie" data-route="collectie">Collectie</a><a href="#/vakmanschap" data-route="vakmanschap">Vakmanschap</a><a href="#/barbiers" data-route="barbiers">Voor barbiers</a><a href="#/kennis" data-route="kennis">Kennis &amp; advies</a><a href="#/contact" data-route="contact">Contact</a><a href="#/reviews" data-route="reviews">Reviews</a></nav>
   <button id="cartBtn" aria-label="Winkelwagen">Winkelwagen <span id="cartCount">0</span></button>
   <button id="burger" aria-label="Menu"><span></span><span></span></button>
@@ -543,7 +593,7 @@ document.body.insertAdjacentHTML('afterbegin', `
 
 document.body.insertAdjacentHTML('beforeend', `
 <footer>
-  <div class="logo"><i class="mark"></i>Eclipse</div>
+  <div class="logo">Eclipse</div>
   <p>© <span id="year"></span> Eclipse Professional Scissors · KvK 12345678 · BTW NL001234567B01</p>
   <p><a href="#">Algemene voorwaarden</a> · <a href="#">Privacy</a> · <a href="#">Retourneren</a></p>
 </footer>
@@ -785,9 +835,6 @@ $('.scroll-hint')?.addEventListener('click', e => {
   e.preventDefault();
   $('#favorieten').scrollIntoView({behavior: 'smooth'});
 });
-
-/* De zonsverduistering in de hero schuift verder terwijl je scrolt */
-addEventListener('scroll', () => document.documentElement.style.setProperty('--e', Math.min(scrollY / 500, 1).toFixed(3)), {passive: true});
 
 let startPage = 'home';
 try { startPage = fromUrl(); } catch (err) {}
