@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="nl" style="background:#f5f1e9">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eclipse | High end barber instruments</title>
+<meta name="description" content="Eclipse: handgeslepen premium kappersscharen voor de veeleisende professional.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f1e9;--white:#fff;--grey:#ebe7df;--line:#d9d4ca;--ink:#1c1c1a;--muted:#6b675f;--soft:#8f8a80;
+  --serif:'Cormorant Garamond',Georgia,serif;--sans:'Manrope',system-ui,sans-serif;--e:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px;background:var(--bg)}
+body{background:var(--bg);color:var(--ink);font:400 1rem/1.8 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,.logo{font-family:var(--serif);font-weight:500}
+h2{font-size:clamp(2.3rem,4.6vw,3.8rem);line-height:1.1;margin-bottom:1.5rem;letter-spacing:-.01em}
+p{margin-bottom:1.2rem;color:var(--muted)}
+section{padding:9rem 0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 1.5rem}
+.eyebrow{display:block;color:var(--soft);letter-spacing:.32em;text-transform:uppercase;font-size:.68rem;font-weight:500;margin-bottom:1.3rem}
+.eyebrow::before{content:"";display:inline-block;width:.5rem;height:.5rem;border-radius:50%;border:1px solid var(--ink);margin-right:.9rem;vertical-align:.08rem}
+
+/* Knoppen */
+.btn{display:inline-block;background:var(--ink);color:var(--bg);padding:1rem 2.3rem;border:1px solid var(--ink);font:500 .7rem var(--sans);letter-spacing:.22em;text-transform:uppercase;cursor:pointer;transition:.35s}
+.btn:hover{background:transparent;color:var(--ink)}
+.btn.outline{background:transparent;color:var(--ink)}
+.btn.outline:hover{background:var(--ink);color:var(--bg)}
+
+/* Header */
+header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 2.5rem;transition:.4s}
+header.solid{background:rgba(245,241,233,.88);backdrop-filter:blur(14px);padding:.9rem 2.5rem;border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:.9rem;font-size:1.45rem;letter-spacing:.38em;text-transform:uppercase;color:var(--ink)}
+.mark{--mk:var(--bg);position:relative;flex:none;width:20px;height:20px;border-radius:50%;background:var(--ink);overflow:hidden}
+.mark::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--mk);transform:translate(32%,-14%)}
+nav{display:flex;gap:1.8rem}
+nav a{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;position:relative;padding:.3rem 0;color:var(--muted);transition:.3s}
+nav a::after{content:"";position:absolute;left:0;bottom:0;width:0;height:1px;background:var(--ink);transition:.3s}
+nav a:hover,nav a.active{color:var(--ink)}nav a:hover::after,nav a.active::after{width:100%}
+#cartBtn{background:none;border:1px solid var(--ink);color:var(--ink);padding:.55rem 1.1rem;font:500 .68rem var(--sans);letter-spacing:.16em;text-transform:uppercase;cursor:pointer;transition:.3s}
+#cartBtn:hover{background:var(--ink);color:var(--bg)}
+#cartCount{margin-left:.4rem}
+#burger{display:none;background:none;border:0;width:30px;height:20px;position:relative;cursor:pointer}
+#burger span{position:absolute;left:0;width:100%;height:1px;background:var(--ink);transition:.3s}
+#burger span:first-child{top:5px}#burger span:last-child{bottom:5px}
+
+/* Hero: een zonsverduistering die verloopt terwijl je scrolt */
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:9rem 5vw 5rem;position:relative;overflow:hidden}
+.hero-text{position:relative;z-index:3;max-width:900px}
+.hero h1{display:flex;flex-direction:column;gap:1.1rem;margin-bottom:2rem}
+.hero h1 .l1{font:500 .75rem var(--sans);letter-spacing:.42em;text-transform:uppercase;color:var(--ink)}
+.hero h1 .l2{font-size:clamp(3.4rem,9.5vw,8rem);line-height:1;color:#7a756b;font-style:italic;font-weight:400}
+.hero .lead{margin:0 auto 3rem;max-width:30rem;font-size:1.05rem}
+.hero-art{position:absolute;inset:0;display:grid;place-items:center;z-index:1;pointer-events:none}
+.hero-art>*{grid-area:1/1}
+.disc{width:min(640px,92vw);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fdfcf9,#e2ddd3 72%);box-shadow:0 0 140px 30px rgba(255,255,255,.8)}
+.moon{width:min(576px,83vw);aspect-ratio:1;border-radius:50%;background:var(--bg);box-shadow:0 0 70px rgba(0,0,0,.08);
+  transform:translate(calc(14vmin*(1 - var(--e))),calc(-7vmin*(1 - var(--e))));transition:transform .2s linear}
+.big-scissors{width:min(460px,80vw);aspect-ratio:1;color:var(--ink);opacity:.07;transform:rotate(12deg)}
+.scroll-hint{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);z-index:3;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--soft);padding-bottom:2.4rem}
+.scroll-hint::after{content:"";position:absolute;bottom:0;left:50%;width:1px;height:1.9rem;background:var(--ink);animation:drop 2.4s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* Vertrouwensbalk */
+.usp{padding:0;background:var(--white);border-block:1px solid var(--line)}
+.usp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;padding-block:3rem;text-align:center}
+.usp b{display:block;font:500 1.3rem var(--serif);margin-bottom:.2rem}
+.usp span{font-size:.8rem;color:var(--muted)}
+
+/* Collectie en producten */
+.collection h2{margin-bottom:2rem}
+.sub{max-width:36rem;margin-bottom:3rem}
+.filters{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:3.5rem}
+.filters button{background:none;border:1px solid var(--line);color:var(--muted);padding:.55rem 1.3rem;cursor:pointer;font:500 .68rem var(--sans);letter-spacing:.16em;text-transform:uppercase;transition:.3s}
+.filters button:hover{border-color:var(--ink);color:var(--ink)}
+.filters button.on{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2rem}
+.center-btn{text-align:center;margin-top:4rem}
+.card{background:var(--white);border:1px solid var(--line);display:flex;flex-direction:column;transition:.5s}
+.card:hover{transform:translateY(-6px);box-shadow:0 35px 50px -35px rgba(0,0,0,.3)}
+.card .img{aspect-ratio:1;position:relative;display:grid;place-items:center;overflow:hidden;background:linear-gradient(180deg,#fbf9f5,#f1ede5)}
+.card .img::before,.card .img::after{content:"";position:absolute;border-radius:50%;aspect-ratio:1;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.card .img::before{width:66%;background:#e2ddd3}
+.card .img::after{width:60%;background:#f8f5ef;transform:translate(16%,-12%)}
+.card:hover .img::after{transform:translate(0,0)}
+.card .img svg{position:relative;z-index:2;width:44%;aspect-ratio:1;color:var(--ink);transform:rotate(12deg);transition:.9s}
+.card:hover .img svg{transform:rotate(-6deg) scale(1.06)}
+.tag{position:absolute;top:1.1rem;left:1.1rem;z-index:3;background:var(--ink);color:var(--bg);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;padding:.25rem .75rem}
+.card .body{padding:1.8rem;display:flex;flex-direction:column;flex:1}
+.card h3{font-size:1.5rem;margin-bottom:.5rem}
+.card p{font-size:.9rem;flex:1}
+.card .row{display:flex;justify-content:space-between;align-items:center;margin-top:1rem;padding-top:1.2rem;border-top:1px solid var(--line)}
+.price{font:500 1.4rem var(--serif)}
+.add{background:none;border:1px solid var(--ink);color:var(--ink);padding:.55rem 1rem;cursor:pointer;font:500 .64rem var(--sans);letter-spacing:.16em;text-transform:uppercase;transition:.3s}
+.add:hover{background:var(--ink);color:var(--bg)}
+
+/* Verhaal, proces, citaat */
+.story,.cta-final{background:var(--white)}
+.split{display:grid;grid-template-columns:1fr 1.2fr;gap:6rem;align-items:start}
+.process h2{margin-bottom:3.5rem}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.steps article{padding:2.2rem;border:1px solid var(--line);background:var(--white);transition:.5s}
+.steps article:hover{transform:translateY(-6px);box-shadow:0 30px 40px -30px rgba(0,0,0,.25)}
+.steps span{font:italic 400 2.6rem var(--serif);color:var(--soft)}
+.steps h3{font-size:1.6rem;margin:.4rem 0 .6rem}
+.steps p{margin:0;font-size:.9rem}
+.quote{position:relative;overflow:hidden;text-align:center;padding:11rem 1.5rem;background:var(--grey)}
+.quote::before,.quote::after{content:"";position:absolute;left:50%;top:50%;border-radius:50%;transform:translate(-50%,-50%);border:1px solid var(--line)}
+.quote::before{width:min(620px,90vw);aspect-ratio:1}.quote::after{width:min(420px,70vw);aspect-ratio:1}
+.quote>*{position:relative;z-index:1}
+.quote blockquote{font:italic 400 clamp(2rem,4.8vw,3.8rem)/1.25 var(--serif);max-width:860px;margin:0 auto 2rem}
+.cta-final{text-align:center}
+.cta-final p{max-width:36rem;margin:0 auto 2.5rem}
+
+/* Subpagina's */
+.sub-first{padding-top:11rem}
+.page-title{font-size:clamp(2.8rem,7vw,5.6rem);line-height:1.05;margin:1rem 0 5rem;letter-spacing:-.015em}
+.photo{position:relative;margin:0 18px 18px 0}
+.photo::before{content:"";position:absolute;inset:18px -18px -18px 18px;border:1px solid var(--soft);opacity:.55}
+.photo img{position:relative;z-index:1;display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;filter:saturate(.8) contrast(1.02) brightness(1.03);box-shadow:0 45px 60px -40px rgba(0,0,0,.45)}
+.photo::after{content:"";position:absolute;z-index:2;inset:0;background:linear-gradient(180deg,transparent 62%,rgba(245,241,233,.4));pointer-events:none}
+.photo.wide img{aspect-ratio:21/9}
+.prose{max-width:42rem;margin:6rem auto 0}
+.prose p,.split-photo p{line-height:2}
+.prose .big{font:400 clamp(1.4rem,2.4vw,1.8rem)/1.65 var(--serif);color:var(--ink)}
+.emph{color:var(--ink)!important;font:italic 500 1.5rem/1.6 var(--serif)}
+.split-photo{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.split-photo>figure{position:sticky;top:7rem}
+.split-photo.rev>figure{order:2}
+.sub-h{font-size:1.8rem;margin:3rem 0 1rem}
+.center-sec{text-align:center}
+.principles{max-width:760px;margin:4rem auto 0}
+.principle{display:grid;grid-template-columns:5rem 1fr;gap:2rem;padding:3.5rem 0;border-top:1px solid var(--line)}
+.principle:last-child{border-bottom:1px solid var(--line)}
+.principle span{font:italic 400 1.8rem var(--serif);color:var(--soft)}
+.principle h3{font-size:1.8rem;margin-bottom:1rem}
+.principle p{margin:0}
+.mat-grid{display:grid;gap:1.5rem}
+.mat{border:1px solid var(--line);padding:2.2rem;background:var(--bg)}
+.mat b{display:block;font:500 3rem/1.1 var(--serif)}
+.mat small{display:block;letter-spacing:.22em;text-transform:uppercase;font-size:.66rem;color:var(--soft);margin:.3rem 0 .6rem}
+.mat p{margin:0;font-size:.9rem}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem}
+.cards.three{grid-template-columns:repeat(3,1fr)}
+.cards article,.feats article{padding:2.4rem;border:1px solid var(--line);background:var(--bg)}
+.cards h3,.feats h3{font-size:1.6rem;margin-bottom:.7rem}
+.cards p,.feats p{margin:0;font-size:.92rem}
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
+.table-wrap{overflow-x:auto;margin-top:3rem}
+.compare{width:100%;border-collapse:collapse;min-width:520px}
+.compare th{text-align:left;color:var(--soft);font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500}
+.compare th,.compare td{padding:1.4rem 1rem;border-bottom:1px solid var(--line)}
+.compare td:first-child{font:500 1.25rem var(--serif)}
+.compare td:last-child,.compare th:last-child{text-align:right}
+
+/* Contact, formulieren, reviews */
+.info{list-style:none;margin-top:2.5rem}
+.info li{padding:1rem 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.info b{display:inline-block;width:8rem;color:var(--soft);font-weight:500;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase}
+form{display:grid;gap:1.5rem}
+label{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);font-weight:500}
+input,textarea{display:block;width:100%;margin-top:.5rem;background:var(--white);border:1px solid var(--line);color:var(--ink);padding:1rem;font:400 1rem var(--sans);transition:.3s}
+input:focus,textarea:focus{outline:0;border-color:var(--ink)}
+input.bad,textarea.bad{border-color:#a5473a}
+#formMsg,#reviewMsg{margin:0;min-height:1.5rem;color:var(--ink)}
+.review{padding:2rem 0;border-bottom:1px solid var(--line)}
+.review p{margin:.6rem 0}.review small{color:var(--soft)}
+.stars{color:var(--ink);letter-spacing:.2em}
+#stars button{background:none;border:0;font-size:1.8rem;color:var(--line);cursor:pointer;transition:.2s}
+#stars button.on,#stars button:hover{color:var(--ink)}
+.empty{color:var(--muted)}
+
+footer{text-align:center;padding:4.5rem 1.5rem;background:var(--grey);border-top:1px solid var(--line)}
+footer .logo{justify-content:center;font-size:1.3rem;margin-bottom:1.2rem}
+footer .mark{--mk:var(--grey)}
+footer p{font-size:.8rem;color:var(--soft);margin-bottom:.4rem}
+footer a:hover{color:var(--ink)}
+
+/* Winkelwagen */
+#overlay{position:fixed;inset:0;background:rgba(28,28,26,.35);opacity:0;pointer-events:none;transition:.3s;z-index:90}
+#cart{position:fixed;top:0;right:0;height:100%;width:min(420px,100%);background:var(--white);border-left:1px solid var(--line);z-index:100;transform:translateX(100%);transition:.45s cubic-bezier(.7,0,.2,1);display:flex;flex-direction:column}
+body.cart-open #cart{transform:none}
+body.cart-open #overlay{opacity:1;pointer-events:auto}
+.cart-head{display:flex;justify-content:space-between;align-items:center;padding:1.6rem;border-bottom:1px solid var(--line)}
+.cart-head h3{font-size:1.6rem}
+.cart-head button{background:none;border:0;color:var(--ink);font-size:2rem;cursor:pointer;line-height:1}
+#cartItems{flex:1;overflow:auto;padding:1rem 1.6rem}
+.item{display:grid;grid-template-columns:1fr auto;gap:.3rem 1rem;padding:1.2rem 0;border-bottom:1px solid var(--line)}
+.item small{color:var(--soft)}
+.qty{display:flex;align-items:center;gap:.6rem;margin-top:.4rem}
+.qty button{width:26px;height:26px;background:none;border:1px solid var(--line);color:var(--ink);cursor:pointer}
+.qty button:hover{border-color:var(--ink)}
+#cartItems .empty{text-align:center;margin-top:3rem}
+.cart-foot{padding:1.6rem;border-top:1px solid var(--line);background:var(--bg)}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1rem}
+.total b{font:500 1.6rem var(--serif)}
+.cart-foot .btn{width:100%}
+#toast{position:fixed;bottom:2rem;left:50%;transform:translate(-50%,200%);background:var(--ink);color:var(--bg);padding:.8rem 1.6rem;font-size:.82rem;z-index:200;transition:.4s;opacity:0;pointer-events:none}
+#toast.show{transform:translate(-50%,0);opacity:1}
+
+/* Verschijnen tijdens scrollen */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.page[hidden]{display:none}
+
+@media(max-width:1100px){
+  #burger{display:block;order:3}
+  nav{position:fixed;inset:0 0 0 30%;background:var(--bg);border-left:1px solid var(--line);flex-direction:column;justify-content:center;align-items:center;gap:2rem;transform:translateX(100%);transition:.4s}
+  nav.open{transform:none}
+  nav a{font-size:.85rem}
+}
+@media(max-width:900px){
+  section{padding:6rem 0}.sub-first{padding-top:8rem}
+  header,header.solid{padding-inline:1.2rem}
+  .split,.split-photo{grid-template-columns:1fr;gap:3rem}
+  .split-photo>figure,.split-photo.rev>figure{position:static;order:0}
+  .usp-grid,.steps{grid-template-columns:repeat(2,1fr)}
+  .cards,.cards.three,.feats{grid-template-columns:1fr}
+  .principle{grid-template-columns:3rem 1fr;gap:1rem}
+  .photo.wide img{aspect-ratio:4/3}.quote{padding:7rem 1.5rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<main>
+<div class="page" data-page="home">
+<section id="home" class="hero">
+  <div class="hero-text">
+    <h1 class="reveal"><span class="l1">High end barber instruments</span><span class="l2">Precision. Crafted</span></h1>
+    <p class="lead reveal">Handgeslepen scharen van kobaltstaal, gemaakt voor barbiers die elke snede voelen.</p>
+    <div class="reveal"><a href="#/collectie" class="btn outline">Shop the collection</a></div>
+  </div>
+  <div class="hero-art"><div class="disc"></div><div class="moon"></div><svg class="big-scissors"><use href="#scissors"/></svg></div>
+  <a href="#/" class="scroll-hint" data-scroll="favorieten">Scroll</a>
+</section>
+
+<section class="usp">
+  <div class="wrap usp-grid">
+    <div class="reveal"><b>Handgeslepen</b><span>Elk paar met de hand afgewerkt</span></div>
+    <div class="reveal"><b>Japans VG-10</b><span>Staal met kobalt, vanadium en chroom</span></div>
+    <div class="reveal"><b>Scherpte-garantie</b><span>Een snede waar je op kunt vertrouwen</span></div>
+    <div class="reveal"><b>Gratis verzending</b><span>Veilig betalen met iDEAL</span></div>
+  </div>
+</section>
+
+<section id="favorieten" class="collection">
+  <div class="wrap">
+    <p class="eyebrow reveal">Uitgelicht</p>
+    <h2 class="reveal">Onze favorieten</h2>
+    <div class="grid" id="featured"></div>
+    <div class="center-btn reveal"><a href="#/collectie" class="btn outline">Bekijk de hele collectie</a></div>
+  </div>
+</section>
+
+<section id="verhaal" class="story">
+  <div class="wrap split">
+    <div class="reveal">
+      <p class="eyebrow">Onze passie</p>
+      <h2>Born from obsession. Built for craft.</h2>
+    </div>
+    <div class="reveal">
+      <p>Eclipse is ontstaan vanuit de overtuiging dat uitzonderlijk vakmanschap begint bij gereedschap dat aan de hoogste eisen voldoet. Elk detail telt. Van de eerste beweging tot de laatste snede.</p>
+      <p>Met een compromisloze focus op precisie, balans en kwaliteit ontwikkelen we scharen voor kappers die alleen genoegen nemen met het beste. Want wie zijn ambacht serieus neemt, verdient gereedschap dat dat weerspiegelt.</p>
+      <a href="#/vakmanschap" class="btn outline" style="margin-top:1.5rem">Lees meer</a>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <p class="eyebrow reveal">Het proces</p>
+    <h2 class="reveal">Van staal tot meesterwerk</h2>
+    <div class="steps">
+      <article class="reveal"><span>01</span><h3>Smeden</h3><p>Het staal wordt gesmeed voor een dichte, gelijkmatige structuur zonder zwakke plekken.</p></article>
+      <article class="reveal"><span>02</span><h3>Harden</h3><p>Een nauwkeurige warmtebehandeling brengt het staal op 62 HRC voor blijvende scherpte.</p></article>
+      <article class="reveal"><span>03</span><h3>Slijpen</h3><p>Elke snede wordt met de hand geslepen en gepolijst tot een vlijmscherpe, soepele rand.</p></article>
+      <article class="reveal"><span>04</span><h3>Keuren</h3><p>Balans, scharnier en snijkracht worden handmatig gecontroleerd voordat een schaar wordt verpakt.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <blockquote class="reveal">Een schaar is geen gereedschap.<br>Het is een verlengstuk van je hand.</blockquote>
+  <p class="reveal eyebrow">Eclipse</p>
+</section>
+
+<section class="cta-final">
+  <div class="wrap reveal">
+    <h2>Ervaar het verschil in je eigen hand</h2>
+    <p>Ontdek de complete collectie professionele kappersscharen.</p>
+    <a href="#/collectie" class="btn outline">Shop the collection</a>
+  </div>
+</section>
+</div>
+<div class="page" data-page="collectie">
+<section id="collectie" class="collection sub-first">
+  <div class="wrap">
+    <p class="eyebrow reveal">Collectie</p>
+    <h2 class="reveal">Kies je Eclipse</h2>
+    <div class="filters reveal" id="filters"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+</div>
+<div class="page" data-page="vakmanschap">
+<section class="sub-first">
+  <div class="wrap">
+    <p class="eyebrow reveal">Vakmanschap</p>
+    <h1 class="page-title reveal">Born from obsession.<br>Built for craft.</h1>
+    <figure class="photo wide reveal"><img src="https://i.ibb.co/996YKp7N/Schermafbeelding-2026-10-12-162744.png" alt="Eclipse vakmanschap" loading="lazy"></figure>
+    <div class="prose reveal">
+      <p class="big">Eclipse begon met een frustratie die iedere kapper herkent. Een schaar die aan het begin van de dag goed aanvoelt, maar na een paar weken knippen niet meer de scherpte, precisie en controle biedt die het vak vraagt. Een gereedschap dat je zou moeten ondersteunen, maar je uiteindelijk in de weg staat.</p>
+      <p>Voor onze oprichter was dat niet goed genoeg.</p>
+      <p>Want een schaar is voor een kapper meer dan een instrument. Het is een verlengstuk van de hand, een essentieel onderdeel van iedere beweging en de basis van ieder professioneel meesterstuk. Het bepaalt hoe je werkt, hoe je voelt en hoeveel vertrouwen je hebt in iedere snede. Dat verdient gereedschap waarop je niet alleen kunt vertrouwen wanneer je begint, maar gedurende de hele dag, en iedere dag opnieuw.</p>
+      <p class="emph">Vanuit die overtuiging ontstond Eclipse.</p>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap split-photo">
+    <figure class="photo reveal"><img src="https://i.ibb.co/VWzJbgbn/Schleifen.jpg" alt="Een Eclipse schaar wordt met de hand geslepen" loading="lazy"></figure>
+    <div class="reveal">
+      <h2>Geen genoegen nemen met goed genoeg.</h2>
+      <p>Het bereiken van een schaar die écht aan die standaard voldoet, vroeg om meer dan een goed idee. Het vroeg om geduld, toewijding en de bereidheid om steeds opnieuw kritisch te kijken naar ieder detail.</p>
+      <p>Er volgden talloze prototypes, eindeloze aanpassingen en duizenden uren in de werkplaats. Iedere vorm, iedere beweging en iedere snede bracht ons dichter bij waar we naar zochten. We zochten een schaar die natuurlijk in de hand ligt, moeiteloos door het haar glijdt en de controle geeft die een vakman nodig heeft.</p>
+      <p>Niet alleen een scherpe schaar, maar een schaar waarin balans, gevoel en precisie samenkomen. Een instrument dat niet afleidt van het werk, maar het ondersteunt. Dat niet vraagt om aanpassing van de kapper, maar juist aanvoelt als een vanzelfsprekend verlengstuk van zijn hand.</p>
+      <p class="emph">We namen geen genoegen met wat voldeed. We bleven zoeken naar wat beter kon.</p>
+      <p>Want echte kwaliteit ontstaat niet door de snelste weg te kiezen, maar door de juiste weg te blijven volgen, ook wanneer niemand anders het verschil zou opmerken.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap split-photo rev">
+    <figure class="photo reveal"><img src="https://i.ibb.co/35sN6q5f/Kontrolle.jpg" alt="Elke Eclipse schaar wordt handmatig gekeurd" loading="lazy"></figure>
+    <div class="reveal">
+      <h2>Premium voor kappers.</h2>
+      <p>We geloven dat het verschil tussen goed en uitzonderlijk vaak in de kleinste details zit. In de balans van een schaar. In de soepelheid waarmee de bladen bewegen. In het vertrouwen waarmee je een precieze snede maakt, zelfs tijdens de drukste momenten van de dag.</p>
+      <p>Daarom staat bij Eclipse niet alleen het resultaat centraal, maar ook de ervaring van degene die ermee werkt. Een goede schaar moet presteren wanneer het erop aankomt. Ze moet comfortabel aanvoelen, gecontroleerd snijden en haar scherpte langdurig behouden. Ze moet bestand zijn tegen het ritme van een professionele werkdag en het vertrouwen verdienen dat je er keer op keer in stelt.</p>
+      <p>Dat is de standaard waar we naar streven. Niet omdat het mooi klinkt, maar omdat we weten wat goed gereedschap betekent voor iemand die zijn ambacht met toewijding uitoefent.</p>
+      <h3 class="sub-h">Een bewuste keuze voor kwaliteit.</h3>
+      <p>Bij Eclipse kiezen we voor aandacht boven haast, voor doordachte ontwikkeling boven snelle oplossingen en voor kwaliteit die je ervaart in het dagelijkse gebruik. We geloven niet in compromissen die ten koste gaan van het gevoel, de prestaties of het vertrouwen in je gereedschap.</p>
+      <p>Premium betekent voor ons niet alleen hoe een schaar eruitziet. Het betekent hoe ze aanvoelt wanneer je haar oppakt. Hoe gecontroleerd ze door het haar beweegt. Hoe vanzelfsprekend ze wordt in je hand. En hoe je erop kunt rekenen, knipbeurt na knipbeurt.</p>
+      <p class="emph">Dat vertrouwen moet je niet worden verteld. Dat moet je zelf kunnen ervaren.</p>
+    </div>
+  </div>
+</section>
+
+<section class="story center-sec">
+  <div class="wrap">
+    <h2 class="reveal">Eclipse.</h2>
+    <div class="prose reveal" style="margin-top:3rem">
+      <p>Achter iedere goede knipbeurt staat een vakman met gevoel, techniek en oog voor detail. En achter iedere vakman hoort gereedschap te staan dat aan dezelfde hoge eisen voldoet.</p>
+      <p>Eclipse is ontstaan vanuit de wens om gereedschap te maken met een duidelijke visie en een compromisloze aandacht voor kwaliteit, voor vakmensen die iedere dag het verschil maken met hun handen.</p>
+      <p>Want uiteindelijk draait het niet om de schaar zelf. Het draait om wat je ermee kunt creëren.</p>
+      <p class="emph">Om de controle over iedere beweging. De precisie van iedere snede. En het vertrouwen om je volledig op je vak te kunnen richten.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow reveal">Waar wij voor staan</p>
+    <h2 class="reveal">De Eclipse-principes</h2>
+    <div class="principles">
+      <article class="principle reveal"><span>01</span><div><h3>Compromisloze materialen</h3><p>Uitsluitend Japans VG-10-staal. Geen sluiproutes, geen surrogaat. Hetzelfde staal dat wordt gebruikt voor de beste keukenmessen ter wereld.</p></div></article>
+      <article class="principle reveal"><span>02</span><div><h3>Handmatig vakmanschap</h3><p>Elke schaar wordt met de hand afgewerkt. Machines maken de basisvorm; vakmensen creëren het instrument. Wij geloven dat je dat verschil voelt bij elke knip.</p></div></article>
+      <article class="principle reveal"><span>03</span><div><h3>Ontworpen voor professionals</h3><p>Wij ontwerpen voor kappers die 8 uur per dag, 6 dagen per week werken. Ergonomie, balans en het behoud van de scherpte zijn geen extraatjes, het zijn absolute vereisten.</p></div></article>
+      <article class="principle reveal"><span>04</span><div><h3>Precisie die je kunt vertrouwen</h3><p>Een goede eerste indruk is niet genoeg. Professioneel gereedschap moet keer op keer presteren, ook wanneer de werkdag lang is en de agenda vol staat. Daarom geloven we in kwaliteit die verder gaat dan de eerste knip. Het gaat om een consistente snijbeweging, betrouwbare controle en een gevoel waarop je blindelings kunt vertrouwen. Want echte kwaliteit bewijst zich niet één keer, maar bij iedere knip opnieuw.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap split">
+    <div class="reveal">
+      <p class="eyebrow">De materialen</p>
+      <h2>Staal dat zijn reputatie waarmaakt.</h2>
+      <p>VG-10 is een roestvast staal met een hoog koolstofgehalte, ontwikkeld in Japan en verrijkt met vanadium, kobalt en chroom. Het bereikt een hardheid van 62 HRC — hard genoeg om een vlijmscherpe snede te behouden, en tegelijkertijd flexibel genoeg om niet te versplinteren. Het is hetzelfde staal waarop de beste messenmakers ter wereld vertrouwen.</p>
+    </div>
+    <div class="mat-grid">
+      <div class="mat reveal"><b>62 HRC</b><small>Hardheid</small></div>
+      <div class="mat reveal"><b>1,0%</b><small>Koolstofgehalte</small><p>Lagen, gevouwen rond een VG-10 kern.</p></div>
+      <div class="mat reveal"><b>38 g</b><small>Ergonomie</small><p>Offset- en crane-grepen die pols en schouder sparen.</p></div>
+    </div>
+  </div>
+</section>
+</div>
+<div class="page" data-page="barbiers">
+<section class="sub-first">
+  <div class="wrap">
+    <p class="eyebrow reveal">Voor barbiers</p>
+    <h1 class="page-title reveal">Gemaakt voor wie<br>elke dag knipt.</h1>
+    <div class="prose reveal" style="margin-top:0">
+      <p class="big">Een barbier werkt met precisie, ritme en gevoel. Fades, contouren, baardlijnen: er is geen ruimte voor een schaar die twijfelt.</p>
+      <p>Daarom ontwikkelen wij elke Eclipse met de praktijk in gedachten. Lange dagen, volle agenda’s en een hand die iedere beweging moet kunnen vertrouwen.</p>
+      <p class="emph">Zodat jij je kunt richten op wat telt: het resultaat in de stoel.</p>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap">
+    <p class="eyebrow reveal">Materialen &amp; kenmerken</p>
+    <h2 class="reveal">Alles draait om gevoel</h2>
+    <div class="feats">
+      <article class="reveal"><h3>Kobaltstaal</h3><p>Japans VG-10, verrijkt met kobalt, vanadium en chroom voor een duurzame, vlijmscherpe snede.</p></article>
+      <article class="reveal"><h3>62 HRC</h3><p>Hard genoeg om scherp te blijven, flexibel genoeg om niet te versplinteren.</p></article>
+      <article class="reveal"><h3>Handgeslepen</h3><p>Machines maken de basisvorm, vakmensen creëren het instrument.</p></article>
+      <article class="reveal"><h3>Ergonomisch</h3><p>Offset- en crane-grepen die pols en schouder sparen, uren achter elkaar.</p></article>
+      <article class="reveal"><h3>Balans</h3><p>Evenwichtig ontworpen voor moeiteloze controle, ook aan het einde van de dag.</p></article>
+      <article class="reveal"><h3>Soepel scharnier</h3><p>Een vloeiende beweging van de eerste tot de laatste snede.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="collection">
+  <div class="wrap">
+    <p class="eyebrow reveal">Direct bestellen</p>
+    <h2 class="reveal">Kies je Eclipse</h2>
+    <div class="grid" id="barbiersGrid"></div>
+    <div class="center-btn reveal"><a href="#/collectie" class="btn outline">Bekijk de hele collectie</a></div>
+  </div>
+</section>
+</div>
+<div class="page" data-page="kennis">
+<section class="sub-first">
+  <div class="wrap split-photo">
+    <div class="reveal">
+      <p class="eyebrow">Kennis &amp; advies</p>
+      <h1 class="page-title" style="margin-bottom:2rem">Weet wat je kiest.<br>Weet wat je hebt.</h1>
+      <p>Een goede schaar kiezen is persoonlijk. Daarom delen we onze kennis over keuze, vergelijking en onderhoud, zodat je gereedschap kiest dat bij jou past en jarenlang meegaat.</p>
+    </div>
+    <figure class="photo reveal"><img src="https://i.ibb.co/Ld4bp17k/Schermafbeelding-2026-10-12-162101.png" alt="Eclipse kennis en advies" loading="lazy"></figure>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap">
+    <p class="eyebrow reveal">Keuzehulp</p>
+    <h2 class="reveal">De juiste schaar in drie vragen</h2>
+    <div class="cards three">
+      <article class="reveal"><h3>Welk type?</h3><p>Een knipschaar voor contouren en precisiewerk. Een effileerschaar voor textuur en het verwijderen van volume.</p></article>
+      <article class="reveal"><h3>Welke lengte?</h3><p>5.5" voor detailwerk, 6.0" als betrouwbare allrounder en 6.5" voor lange, vloeiende sneden.</p></article>
+      <article class="reveal"><h3>Welke grip?</h3><p>Offset- en crane-grepen sparen pols en schouder. Linkshandig? Kies een echte linkshandige schaar, geen gespiegeld model.</p></article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow reveal">Vergelijking</p>
+    <h2 class="reveal">Onze knipscharen naast elkaar</h2>
+    <div class="table-wrap reveal"><table class="compare"><thead><tr><th>Model</th><th>Geschikt voor</th><th>Prijs</th></tr></thead><tbody id="compareBody"></tbody></table></div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap">
+    <p class="eyebrow reveal">Onderhoud</p>
+    <h2 class="reveal">Zo blijft je Eclipse scherp</h2>
+    <div class="principles">
+      <article class="principle reveal"><span>01</span><div><h3>Reinig na ieder gebruik</h3><p>Veeg haar en productresten af met een droge microvezeldoek.</p></div></article>
+      <article class="principle reveal"><span>02</span><div><h3>Olie het scharnier</h3><p>Eén druppel scharnierolie, daarna enkele keren openen en sluiten.</p></div></article>
+      <article class="principle reveal"><span>03</span><div><h3>Controleer de spanning</h3><p>De schaar moet soepel bewegen zonder speling. Stel bij waar nodig.</p></div></article>
+      <article class="principle reveal"><span>04</span><div><h3>Bewaar en laat slijpen door een vakman</h3><p>Bewaar je schaar in het etui en laat hem alleen door een specialist slijpen.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="wrap reveal">
+    <h2>Liever persoonlijk advies?</h2>
+    <p>Ons team denkt graag met je mee en vertelt eerlijk welke schaar bij jouw werk past, ook als dat niet de duurste is. Zo weet je zeker dat je een keuze maakt waar je jarenlang plezier van hebt.</p>
+    <a href="#/contact" class="btn outline">Neem contact op</a>
+  </div>
+</section>
+</div>
+<div class="page" data-page="contact">
+<section id="contact" class="contact sub-first">
+  <div class="wrap split">
+    <div class="reveal">
+      <p class="eyebrow">Contact</p>
+      <h2>Vragen? Wij helpen je graag.</h2>
+      <p>Twijfel je over de juiste maat of wil je advies over slijpen? Ons team antwoordt binnen één werkdag.</p>
+      <ul class="info">
+        <li><b>E-mail</b> info@eclipse-scharen.nl</li>
+        <li><b>Telefoon</b> +31 (0)20 123 45 67</li>
+        <li><b>Adres</b> Ambachtsweg 12, 1234 AB Amsterdam</li>
+        <li><b>Openingstijden</b> ma – vr, 09:00 – 17:30</li>
+      </ul>
+    </div>
+    <form id="contactForm" class="reveal" novalidate>
+      <label>Naam<input type="text" name="naam" required></label>
+      <label>E-mailadres<input type="email" name="email" required></label>
+      <label>Bericht<textarea name="bericht" rows="5" required></textarea></label>
+      <button class="btn" type="submit">Verstuur bericht</button>
+      <p id="formMsg" role="status"></p>
+    </form>
+  </div>
+</section>
+</div>
+<div class="page" data-page="reviews">
+<section class="sub-first">
+  <div class="wrap">
+    <p class="eyebrow reveal">Reviews</p>
+    <h1 class="page-title reveal" style="margin-bottom:2rem">Jouw ervaring telt.</h1>
+    <p class="reveal" style="max-width:36rem">Werk je met een Eclipse? Deel je ervaring en help andere professionals bij hun keuze.</p>
+    <div class="split" style="margin-top:5rem">
+      <div id="reviewList"></div>
+      <form id="reviewForm" class="reveal" novalidate>
+        <label>Naam<input type="text" name="naam" required></label>
+        <div><label>Beoordeling</label><div id="stars"><button type="button" data-v="1">★</button><button type="button" data-v="2">★</button><button type="button" data-v="3">★</button><button type="button" data-v="4">★</button><button type="button" data-v="5">★</button></div></div>
+        <label>Je review<textarea name="tekst" rows="5" required></textarea></label>
+        <button class="btn outline" type="submit">Plaats review</button>
+        <p id="reviewMsg" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+</div>
+</main>
+<script>
+'use strict';
+
+/* ---------- Gedeelde onderdelen (header, footer, winkelwagen) op elke pagina ---------- */
+
+document.body.insertAdjacentHTML('afterbegin', `
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="scissors" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+    <circle cx="28" cy="80" r="12"/><circle cx="72" cy="80" r="12"/><path d="M32 69 L80 6 M68 69 L20 6"/>
+  </symbol>
+</svg>
+<header id="nav">
+  <a href="#/" class="logo"><i class="mark"></i>Eclipse</a>
+  <nav id="menu"><a href="#/collectie" data-route="collectie">Collectie</a><a href="#/vakmanschap" data-route="vakmanschap">Vakmanschap</a><a href="#/barbiers" data-route="barbiers">Voor barbiers</a><a href="#/kennis" data-route="kennis">Kennis &amp; advies</a><a href="#/contact" data-route="contact">Contact</a><a href="#/reviews" data-route="reviews">Reviews</a></nav>
+  <button id="cartBtn" aria-label="Winkelwagen">Winkelwagen <span id="cartCount">0</span></button>
+  <button id="burger" aria-label="Menu"><span></span><span></span></button>
+</header>`);
+
+document.body.insertAdjacentHTML('beforeend', `
+<footer>
+  <div class="logo"><i class="mark"></i>Eclipse</div>
+  <p>© <span id="year"></span> Eclipse Professional Scissors · KvK 12345678 · BTW NL001234567B01</p>
+  <p><a href="#">Algemene voorwaarden</a> · <a href="#">Privacy</a> · <a href="#">Retourneren</a></p>
+</footer>
+<div id="overlay"></div>
+<aside id="cart" aria-label="Winkelwagen">
+  <div class="cart-head"><h3>Winkelwagen</h3><button id="closeCart" aria-label="Sluiten">×</button></div>
+  <div id="cartItems"></div>
+  <div class="cart-foot">
+    <div class="total"><span>Totaal (incl. btw)</span><b id="cartTotal">€ 0,00</b></div>
+    <button class="btn" id="checkout">Afrekenen met iDEAL</button>
+  </div>
+</aside>
+<div id="toast"></div>`);
+
+/* ---------- Productdata ---------- */
+const products = [
+  {id:1, name:'Eclipse Classic 6.0"', cat:'Knipschaar', price:289, tag:'Bestseller', desc:'Offset handvat, VG10-staal en een vlijmscherpe convexe snede. De standaard voor dagelijks gebruik.'},
+  {id:2, name:'Eclipse Master 5.5"', cat:'Knipschaar', price:349, tag:'Nieuw', desc:'Compact en extreem gebalanceerd. Ideaal voor precisiewerk en detailsnedes.'},
+  {id:3, name:'Eclipse Gold Edition 6.5"', cat:'Knipschaar', price:489, tag:'Limited', desc:'Gepolijst VG-10-staal met gouden titanium coating en handgraveerd logo.'},
+  {id:4, name:'Eclipse Texturizer 30T', cat:'Effileerschaar', price:259, tag:'', desc:'30 tanden voor zachte overgangen en natuurlijke textuur zonder trekken.'},
+  {id:5, name:'Eclipse Thinning 40T', cat:'Effileerschaar', price:269, tag:'', desc:'Verwijdert volume gelijkmatig en soepel. Geslepen voor dik en weerbarstig haar.'},
+  {id:6, name:'Eclipse Lefty 6.0"', cat:'Linkshandig', price:299, tag:'', desc:'Echt linkshandig ontworpen, geen gespiegeld model. Voor volledig natuurlijk gebruik.'},
+  {id:7, name:'Eclipse Duo Set', cat:'Sets', price:519, tag:'-10%', desc:'Classic 6.0" plus Texturizer 30T in een luxe leren etui met onderhoudsset.'},
+  {id:8, name:'Eclipse Onderhoudsset', cat:'Accessoires', price:39, tag:'', desc:'Scharenolie, microvezeldoek en reinigingsdoekje voor een lange levensduur.'}
+];
+
+const euro = n => '€ ' + n.toFixed(2).replace('.', ',');
+const $ = (s, c = document) => c.querySelector(s);
+const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+
+/* ---------- Collectie renderen + filter ---------- */
+const grid = $('#grid') || document.createElement('div'), filters = $('#filters') || document.createElement('div');
+const cats = ['Alles', ...new Set(products.map(p => p.cat))];
+
+filters.innerHTML = cats.map((c, i) => `<button class="${i ? '' : 'on'}" data-cat="${c}">${c}</button>`).join('');
+
+const cardHTML = p => `
+    <article class="card reveal">
+      <div class="img">${p.tag ? `<span class="tag">${p.tag}</span>` : ''}<svg><use href="#scissors"/></svg></div>
+      <div class="body">
+        <small class="eyebrow">${p.cat}</small>
+        <h3>${p.name}</h3>
+        <p>${p.desc}</p>
+        <div class="row"><span class="price">${euro(p.price)}</span>
+        <button class="add" data-id="${p.id}">In winkelwagen</button></div>
+      </div>
+    </article>`;
+
+function renderProducts(cat = 'Alles') {
+  const list = cat === 'Alles' ? products : products.filter(p => p.cat === cat);
+  grid.innerHTML = list.map(cardHTML).join('');
+  observe();
+}
+
+/* Homepage: 3 favorieten, barbierspagina: 4 scharen */
+const featured = $('#featured');
+if (featured) featured.innerHTML = products.slice(0, 3).map(cardHTML).join('');
+const barbiersGrid = $('#barbiersGrid');
+if (barbiersGrid) barbiersGrid.innerHTML = products.slice(0, 4).map(cardHTML).join('');
+filters.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  $$('button', filters).forEach(x => x.classList.toggle('on', x === b));
+  renderProducts(b.dataset.cat);
+});
+
+/* ---------- Winkelwagen ---------- */
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem('eclipseCart')) || []; } catch (e) {}
+
+function saveCart() { try { localStorage.setItem('eclipseCart', JSON.stringify(cart)); } catch (e) {} }
+
+function renderCart() {
+  const box = $('#cartItems');
+  if (!cart.length) box.innerHTML = '<p class="empty">Je winkelwagen is nog leeg.</p>';
+  else box.innerHTML = cart.map(i => {
+    const p = products.find(x => x.id === i.id);
+    return `<div class="item"><div><b>${p.name}</b><br><small>${euro(p.price)}</small>
+      <div class="qty"><button data-act="min" data-id="${p.id}">−</button><span>${i.qty}</span><button data-act="plus" data-id="${p.id}">+</button></div></div>
+      <b>${euro(p.price * i.qty)}</b></div>`;
+  }).join('');
+  const total = cart.reduce((s, i) => s + products.find(p => p.id === i.id).price * i.qty, 0);
+  $('#cartTotal').textContent = euro(total);
+  $('#cartCount').textContent = cart.reduce((s, i) => s + i.qty, 0);
+  saveCart();
+}
+
+function changeQty(id, d) {
+  const item = cart.find(i => i.id === id);
+  if (!item) { if (d > 0) cart.push({id, qty: 1}); }
+  else { item.qty += d; if (item.qty <= 0) cart = cart.filter(i => i.id !== id); }
+  renderCart();
+}
+
+function toast(msg) {
+  const t = $('#toast'); t.textContent = msg; t.classList.add('show');
+  clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove('show'), 2200);
+}
+const toggleCart = open => document.body.classList.toggle('cart-open', open);
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('.add'); if (!b) return;
+  changeQty(+b.dataset.id, 1); toast('Toegevoegd aan winkelwagen');
+});
+$('#cartItems').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  changeQty(+b.dataset.id, b.dataset.act === 'plus' ? 1 : -1);
+});
+$('#cartBtn').onclick = () => toggleCart(true);
+$('#closeCart').onclick = $('#overlay').onclick = () => toggleCart(false);
+$('#checkout').onclick = () => toast(cart.length ? 'Demo: koppel hier je betaalprovider (bijv. Mollie)' : 'Je winkelwagen is leeg');
+
+/* ---------- Navigatie ---------- */
+const nav = $('#nav'), menu = $('#menu');
+addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 50), {passive: true});
+$('#burger').onclick = () => menu.classList.toggle('open');
+$$('a', menu).forEach(a => a.onclick = () => menu.classList.remove('open'));
+
+/* ---------- Scroll-reveal ---------- */
+const io = new IntersectionObserver((entries, o) => {
+  entries.forEach(en => {
+    if (!en.isIntersecting) return;
+    const el = en.target;
+    el.style.transitionDelay = (el.dataset.delay || 0) + 'ms';
+    el.classList.add('in'); o.unobserve(el);
+    if (el.parentElement.classList.contains('stats')) countUp($('b', el));
+  });
+}, {threshold: .15});
+
+function observe() {
+  $$('.reveal:not(.in)').forEach((el, i) => {
+    const sib = [...el.parentElement.children].indexOf(el);
+    el.dataset.delay = Math.min(sib, 5) * 120;
+    io.observe(el);
+  });
+}
+
+/* ---------- Tellers ---------- */
+function countUp(el) {
+  const target = +el.dataset.count, dur = 1600, start = performance.now();
+  const suffix = el.hasAttribute('data-plus') ? '+' : el.hasAttribute('data-pct') ? '%' : '';
+  (function tick(now) {
+    const p = Math.min((now - start) / dur, 1);
+    el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))).toLocaleString('nl-NL') + suffix;
+    if (p < 1) requestAnimationFrame(tick);
+  })(start);
+}
+
+/* ---------- Contactformulier ---------- */
+$('#contactForm')?.addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target, msg = $('#formMsg'); let ok = true;
+  $$('input,textarea', f).forEach(i => {
+    const valid = i.value.trim() && (i.type !== 'email' || /^\S+@\S+\.\S+$/.test(i.value));
+    i.classList.toggle('bad', !valid); if (!valid) ok = false;
+  });
+  msg.textContent = ok ? 'Bedankt! We nemen binnen één werkdag contact met je op.' : 'Controleer de gemarkeerde velden.';
+  if (ok) f.reset(); // Koppel hier een backend/e-mailservice voor echte verzending
+});
+
+/* ---------- Start ---------- */
+$('#year').textContent = new Date().getFullYear();
+renderProducts();
+renderCart();
+
+
+/* ---------- Vergelijkingstabel ---------- */
+const uses = {1: 'Allround, dagelijks gebruik', 2: 'Detailwerk en precisie', 3: 'Lange, vloeiende sneden', 6: 'Linkshandige professionals'};
+const cb = $('#compareBody');
+if (cb) cb.innerHTML = Object.keys(uses).map(id => {
+  const p = products.find(x => x.id == id);
+  return `<tr><td>${p.name}</td><td>${uses[id]}</td><td>${euro(p.price)}</td></tr>`;
+}).join('');
+
+/* ---------- Reviews (opgeslagen in deze browser; koppel een backend voor echte reviews) ---------- */
+let reviews = [], rating = 0;
+try { reviews = JSON.parse(localStorage.getItem('eclipseReviews')) || []; } catch (e) {}
+const esc = t => t.replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
+function renderReviews() {
+  $('#reviewList').innerHTML = reviews.length
+    ? reviews.map(r => `<article class="review"><div class="stars">${'★'.repeat(r.stars)}${'☆'.repeat(5 - r.stars)}</div><p>${esc(r.text)}</p><small>${esc(r.name)}</small></article>`).join('')
+    : '<p class="empty">Nog geen reviews. Wees de eerste om je ervaring te delen.</p>';
+}
+$$('#stars button').forEach(b => b.addEventListener('click', () => {
+  rating = +b.dataset.v;
+  $$('#stars button').forEach(x => x.classList.toggle('on', +x.dataset.v <= rating));
+}));
+$('#reviewForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target, name = f.naam.value.trim(), text = f.tekst.value.trim(), msg = $('#reviewMsg');
+  if (!name || !text || !rating) { msg.textContent = 'Vul je naam, beoordeling en review in.'; return; }
+  reviews.unshift({name, text, stars: rating});
+  try { localStorage.setItem('eclipseReviews', JSON.stringify(reviews)); } catch (err) {}
+  f.reset(); rating = 0; $$('#stars button').forEach(x => x.classList.remove('on'));
+  msg.textContent = 'Bedankt voor je review!';
+  renderReviews();
+});
+renderReviews();
+
+/* ---------- Pagina's (alles in één bestand, elke link opent een eigen pagina) ---------- */
+const views = $$('.page');
+const titles = {
+  home: 'Eclipse | High end barber instruments',
+  collectie: 'Collectie | Eclipse',
+  vakmanschap: 'Vakmanschap | Eclipse',
+  barbiers: 'Voor barbiers | Eclipse',
+  kennis: 'Kennis & advies | Eclipse',
+  contact: 'Contact | Eclipse',
+  reviews: 'Reviews | Eclipse'
+};
+
+function show(name) {
+  if (!titles[name]) name = 'home';
+  views.forEach(v => v.hidden = v.dataset.page !== name);
+  $$('#menu a').forEach(a => a.classList.toggle('active', a.dataset.route === name));
+  document.title = titles[name];
+  menu.classList.remove('open');
+  toggleCart(false);
+  window.scrollTo(0, 0);
+  observe();
+}
+
+/* Klikken op een interne link: wissel direct van pagina, zonder afhankelijk te zijn van de browser-URL */
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#/"]');
+  if (!a) return;
+  e.preventDefault();
+  const name = a.getAttribute('href').slice(2) || 'home';
+  show(name);
+  try { history.pushState({page: name}, '', '#/' + (name === 'home' ? '' : name)); } catch (err) {}
+});
+
+/* Terugknop van de browser */
+const fromUrl = () => (location.hash.replace(/^#\/?/, '') || 'home');
+addEventListener('popstate', () => show(fromUrl()));
+addEventListener('hashchange', () => show(fromUrl()));
+
+/* Pijltje in de hero scrolt naar de favorieten (blijft op dezelfde pagina) */
+$('.scroll-hint')?.addEventListener('click', e => {
+  e.preventDefault();
+  $('#favorieten').scrollIntoView({behavior: 'smooth'});
+});
+
+/* De zonsverduistering in de hero schuift verder terwijl je scrolt */
+addEventListener('scroll', () => document.documentElement.style.setProperty('--e', Math.min(scrollY / 500, 1).toFixed(3)), {passive: true});
+
+let startPage = 'home';
+try { startPage = fromUrl(); } catch (err) {}
+show(startPage);
+</script>
+</body>
+</html>
