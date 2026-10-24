@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fff;--white:#fff;--grey:#faf9f7;--tint:#f4f2ee;--line:#e7e4de;--ink:#161616;--muted:#6f6b64;--soft:#a09c94;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif}
+:root{--bg:#fff;--white:#fff;--grey:#f7f2ea;--tint:#f4f2ee;--line:#d6d0c6;--ink:#161616;--muted:#4f4b45;--soft:#7a756c;--gold:#9a7638;--gold-l:#c4a266;--sand:#f1e8dc;--sage:#e6ece7;--mist:#e8e9f0;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Jost',system-ui,sans-serif}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:70px;background:var(--bg)}
 body{background:var(--bg);color:var(--ink);font:400 1rem/1.8 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -272,12 +272,87 @@ footer .logo{margin-bottom:1.4rem}
 #toast{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:0 10px 30px rgba(0,0,0,.08)}
 .reveal{transform:translateY(24px);transition:opacity 1.2s ease,transform 1.2s cubic-bezier(.2,.7,.2,1)}
 @media(max-width:900px){section{padding:6.5rem 0}header,header.solid{padding-inline:1.2rem}.quote{padding:7rem 1.5rem}.logo{letter-spacing:.4em}}
+
+/* Meer leven: kleur, beweging en interactie */
+body{font-weight:400;font-size:1.04rem;color:var(--ink)}
+.eyebrow{font-size:.72rem;color:var(--gold);font-weight:500}
+.eyebrow::before{background:var(--gold-l)}
+nav a{font-size:.72rem;color:#3d3a35}
+nav a::after{background:var(--gold)}
+.btn,.add,.filters button,label,.scroll-hint,#cartBtn{font-size:.72rem}
+.btn:hover,.btn.outline:hover{background:var(--ink);border-color:var(--ink)}
+.hero .btn.outline:hover{background:var(--gold);border-color:var(--gold)}
+#cartCount{color:var(--gold);font-weight:500}
+label{color:var(--soft);font-weight:500}
+.usp{background:#fbf8f2}
+.usp b::before{content:"";display:block;width:1.6rem;height:1px;background:var(--gold-l);margin:0 auto .9rem}
+
+/* Hero */
+.hero{background:#fff}
+.hero::after{content:"";position:absolute;inset:-20%;z-index:0;filter:blur(30px);animation:drift 18s ease-in-out infinite alternate;
+  background:radial-gradient(40% 40% at 20% 30%,rgba(214,186,140,.42),transparent 70%),radial-gradient(35% 35% at 82% 25%,rgba(164,194,180,.38),transparent 70%),radial-gradient(40% 40% at 65% 88%,rgba(232,194,196,.34),transparent 70%)}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(420px circle at var(--mx,50%) var(--my,40%),rgba(255,255,255,.85),transparent 65%)}
+@keyframes drift{to{transform:translate3d(4%,-3%,0) scale(1.1)}}
+.hero-scissors{position:absolute;right:3%;top:52%;width:min(440px,46vw);aspect-ratio:1;transform:translateY(-50%) rotate(-16deg);z-index:2;fill:none;stroke:var(--gold-l);stroke-width:.4;pointer-events:none}
+.blade{transform-origin:50px 45.4px}
+.blade.a{animation:snipA 5s ease-in-out infinite}.blade.b{animation:snipB 5s ease-in-out infinite}
+@keyframes snipA{0%,100%{transform:rotate(-2deg)}42%,58%{transform:rotate(9deg)}}
+@keyframes snipB{0%,100%{transform:rotate(2deg)}42%,58%{transform:rotate(-9deg)}}
+.hero h1 .l1{font-size:.76rem;font-weight:500;color:var(--ink)}
+.hero h1 .l2{background:linear-gradient(100deg,#57524a 35%,#b8935a 50%,#57524a 65%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s linear infinite}
+@keyframes shine{to{background-position:-250% 0}}
+.hero .lead{color:var(--muted)}
+.scroll-hint{color:var(--muted)}.scroll-hint::after{background:var(--gold)}
+
+/* Kleurvariatie in kleine accenten */
+#progress{position:fixed;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold-l),var(--gold));transform-origin:0 50%;transform:scaleX(0);z-index:120}
+.card:nth-child(3n+1){--t:var(--sand);--th:#e8dccb}
+.card:nth-child(3n+2){--t:var(--sage);--th:#d9e3dc}
+.card:nth-child(3n){--t:var(--mist);--th:#dcdde9}
+.card .img{background:var(--t,var(--tint))}
+.card:hover .img{background:var(--th,#eeebe5)}
+.card .img svg{transition:transform .5s cubic-bezier(.2,.7,.2,1);transform:translate(calc(var(--tx,0)*1px),calc(var(--ty,0)*1px)) rotate(calc(12deg + var(--tx,0)*.4deg))}
+.card:hover .img svg{transform:translate(calc(var(--tx,0)*1px),calc(var(--ty,0)*1px)) rotate(calc(6deg + var(--tx,0)*.4deg)) scale(1.06)}
+.tag{color:var(--gold);font-weight:500}
+.price{color:var(--ink)}
+.add{color:var(--ink)}.add:hover{color:var(--gold);border-color:var(--gold)}
+.filters button{color:var(--muted)}
+.filters button.on{border-bottom-color:var(--gold);color:var(--ink)}
+.story{background:var(--grey)}
+.cta-final{background:linear-gradient(180deg,#fff,var(--sage))}
+.steps article,.cards article,.feats article{transition:transform .5s,border-color .5s}
+.steps article:hover,.cards article:hover,.feats article:hover{border-top-color:var(--gold);transform:translateY(-5px)}
+.steps span,.principle span,.mat b{color:var(--gold)}
+.mat small{color:var(--muted)}
+.principle{transition:padding .5s}
+.principle h3{transition:color .4s}.principle:hover h3{color:var(--gold)}
+.compare th{color:var(--gold)}
+.compare tbody tr{transition:background .3s}.compare tbody tr:hover{background:#faf6ee}
+.stars,.review .stars,#stars button.on,#stars button:hover{color:var(--gold)}
+.photo::before{border-color:var(--gold-l)}
+.emph{color:var(--gold)!important}
+.quote{background:radial-gradient(ellipse at 50% 0%,#2b2721,#1a1917 70%)}
+.quote blockquote{color:#f5f1e9}
+.quote .eyebrow{color:var(--gold-l)}.quote .eyebrow::before{background:var(--gold-l)}
+footer{background:#efe8dd}
+footer p{color:var(--muted)}
+input,textarea{border-bottom-color:#bdb6aa}
+input:focus,textarea:focus{border-color:var(--gold)}
+.info b{color:var(--gold)}
+.usp span,.card p,.steps p,.cards p,.feats p,.principle p,.mat p{color:var(--muted)}
+
+@media(max-width:900px){.hero-scissors{right:50%;transform:translate(50%,-50%) rotate(-16deg);width:80vw;opacity:.4}}
+/* Foto's onthullen */
+.photo.reveal img{clip-path:inset(0 0 100% 0);transform:scale(1.08);transition:clip-path 1.5s cubic-bezier(.7,0,.2,1),transform 1.8s cubic-bezier(.2,.7,.2,1)}
+.photo.reveal.in img{clip-path:inset(0);transform:none}
+@media(prefers-reduced-motion:reduce){.photo.reveal img{clip-path:none;transform:none}}
 </style>
 </head>
 <body>
 <main>
 <div class="page" data-page="home">
 <section id="home" class="hero">
+  <svg class="hero-scissors" viewBox="0 0 100 100" aria-hidden="true"><g class="blade a"><circle cx="28" cy="80" r="12"/><path d="M32 69 L80 6"/></g><g class="blade b"><circle cx="72" cy="80" r="12"/><path d="M68 69 L20 6"/></g></svg>
   <div class="hero-text">
     <h1 class="reveal"><span class="l1">High end barber instruments</span><span class="l2">Precision. Crafted</span></h1>
     <p class="lead reveal">Handgeslepen scharen van kobaltstaal, gemaakt voor barbiers die elke snede voelen.</p>
@@ -792,6 +867,34 @@ $('#reviewForm').addEventListener('submit', e => {
 });
 renderReviews();
 
+/* ---------- Extra leven: voortgangsbalk, spotlight in de hero, producten reageren op je muis ---------- */
+document.body.insertAdjacentHTML('afterbegin', '<div id="progress"></div>');
+const bar = $('#progress');
+const updateBar = () => {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  bar.style.transform = `scaleX(${max > 0 ? Math.min(scrollY / max, 1) : 0})`;
+};
+addEventListener('scroll', updateBar, {passive: true});
+
+const heroEl = $('#home');
+heroEl?.addEventListener('mousemove', e => {
+  const r = heroEl.getBoundingClientRect();
+  heroEl.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+  heroEl.style.setProperty('--my', (e.clientY - r.top) + 'px');
+});
+
+document.addEventListener('mousemove', e => {
+  const img = e.target.closest?.('.card .img');
+  if (!img) return;
+  const r = img.getBoundingClientRect();
+  img.style.setProperty('--tx', ((e.clientX - r.left) / r.width - .5) * 24);
+  img.style.setProperty('--ty', ((e.clientY - r.top) / r.height - .5) * 24);
+});
+document.addEventListener('mouseout', e => {
+  const img = e.target.closest?.('.card .img');
+  if (img && !img.contains(e.relatedTarget)) { img.style.setProperty('--tx', 0); img.style.setProperty('--ty', 0); }
+});
+
 /* ---------- Pagina's (alles in één bestand, elke link opent een eigen pagina) ---------- */
 const views = $$('.page');
 const titles = {
@@ -813,6 +916,7 @@ function show(name) {
   toggleCart(false);
   window.scrollTo(0, 0);
   observe();
+  updateBar();
 }
 
 /* Klikken op een interne link: wissel direct van pagina, zonder afhankelijk te zijn van de browser-URL */
